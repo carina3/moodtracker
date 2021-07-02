@@ -14,19 +14,20 @@ public class MoodEntry {
     private BaseMood mood;
     private String description;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
     private Set<Tag> tags = new HashSet<>();
     private Instant creationTime;
 
     public MoodEntry() {
-        this.creationTime = Instant.now();
+
     }
 
-    public MoodEntry(BaseMood mood, String description, Set<Tag> tags) {
+    public MoodEntry(BaseMood mood, String description, Set<Tag> tags, Instant creationTime) {
         super();
         this.mood = mood;
         this.description = description;
         this.tags = tags;
+        this.creationTime = creationTime;
     }
 
     public Long getId() {

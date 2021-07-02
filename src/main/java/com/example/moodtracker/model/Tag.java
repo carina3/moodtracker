@@ -33,4 +33,12 @@ public class Tag {
     public Long getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "tag='" + tag + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

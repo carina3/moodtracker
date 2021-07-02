@@ -2,10 +2,7 @@ package com.example.moodtracker.controller;
 
 
 import com.example.moodtracker.model.MoodEntry;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,13 +14,13 @@ public interface MoodOperations {
     List<MoodEntry> getAll();
 
     @PostMapping
-    String addEntry();
+    MoodEntry addEntry(MoodEntry newMoodEntry);
 
-    @GetMapping("/{entryId}")
-    MoodEntry findById();
+    @GetMapping("/{id}")
+    MoodEntry findById(@PathVariable Long id);
 
-    @PutMapping("/{entryId}")
-    String updateEntry();
+    @PutMapping("/{id}")
+    MoodEntry updateEntry(@PathVariable Long id, MoodEntry newMoodEntry);
 
     @GetMapping("/findByMood")
     List<MoodEntry> findByMood();
