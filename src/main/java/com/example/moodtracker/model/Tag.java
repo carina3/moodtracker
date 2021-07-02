@@ -1,29 +1,28 @@
 package com.example.moodtracker.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Tag {
-    private String tag;
     @Id
     @GeneratedValue
     private Long id;
+
+    private String keyword;
 
     public Tag() {
     }
 
     public Tag(String tag) {
-        this.tag = tag;
+        this.keyword = tag;
     }
 
-    public String getTag() {
-        return tag;
+    public String getKeyword() {
+        return keyword;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setKeyword(String tag) {
+        this.keyword = tag;
     }
 
     public void setId(Long id) {
@@ -37,8 +36,8 @@ public class Tag {
     @Override
     public String toString() {
         return "Tag{" +
-                "tag='" + tag + '\'' +
-                ", id=" + id +
+                "id=" + id +
+                ", keyword='" + keyword + '\'' +
                 '}';
     }
 }

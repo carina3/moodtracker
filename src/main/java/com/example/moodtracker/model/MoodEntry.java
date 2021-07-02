@@ -19,15 +19,14 @@ public class MoodEntry {
     private Instant creationTime;
 
     public MoodEntry() {
-
     }
 
-    public MoodEntry(BaseMood mood, String description, Set<Tag> tags, Instant creationTime) {
+    public MoodEntry(BaseMood mood, String description, Set<Tag> tags) {
         super();
         this.mood = mood;
         this.description = description;
         this.tags = tags;
-        this.creationTime = creationTime;
+        creationTime = Instant.now();
     }
 
     public Long getId() {

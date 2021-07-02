@@ -1,20 +1,22 @@
 package com.example.moodtracker.controller;
 
 
+import com.example.moodtracker.model.BaseMood;
 import com.example.moodtracker.model.MoodEntry;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
-@RequestMapping("/moodEntry")
+@RequestMapping(value = "/moodEntry",consumes = MediaType.APPLICATION_JSON_VALUE)
 public interface MoodOperations {
 
     @GetMapping
     List<MoodEntry> getAll();
 
-    @PostMapping
-    MoodEntry addEntry(MoodEntry newMoodEntry);
+    @PostMapping()
+    MoodEntry addEntry(@RequestBody MoodEntry newMoodEntry);
 
     @GetMapping("/{id}")
     MoodEntry findById(@PathVariable Long id);
@@ -22,8 +24,8 @@ public interface MoodOperations {
     @PutMapping("/{id}")
     MoodEntry updateEntry(@PathVariable Long id, MoodEntry newMoodEntry);
 
-    @GetMapping("/findByMood")
-    List<MoodEntry> findByMood();
+    @GetMapping("/search")
+    List<MoodEntry> findByMood(@RequestParam("mood") BaseMood moodToFind);
 
     @GetMapping("/findByTags")
     List<MoodEntry> findByTags();
