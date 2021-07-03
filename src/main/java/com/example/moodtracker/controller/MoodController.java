@@ -16,6 +16,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 public class MoodController implements MoodOperations {
@@ -80,7 +81,7 @@ public class MoodController implements MoodOperations {
     }
 
     @Override
-    public List<MoodEntry> findByTagsIn(List<Tag> tags) {
-        return moodEntryRepository.findByTagsIn(tags);
+    public List<MoodEntry> findByTagsIn(List<String> keywords) {
+        return moodEntryRepository.findByTagsIn(keywords);
     }
 }

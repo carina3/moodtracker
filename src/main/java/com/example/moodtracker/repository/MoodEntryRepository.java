@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface MoodEntryRepository extends JpaRepository<MoodEntry, Long> {
 
-    //mysql> select * from tag as t where t.keyword in ("fressen", "hass");
     public List<MoodEntry> findByMood(BaseMood mood);
 
-    public List<MoodEntry> findByTagsIn(List<Tag> tags);
+    @Query(value = "SELECT me FROM MoodEntry me INNER JOIN me.tags tags WHERE tags.keyword in :keywords")
+    public List<MoodEntry> findByTagsIn(List<String> keywords);
 }

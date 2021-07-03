@@ -34,5 +34,5 @@ public interface MoodOperations {
 
     //GET search/tag/find
     @GetMapping("/search/tags")
-    List<MoodEntry> findByTagsIn(@RequestParam("find") List<Tag> tags);
+    List<MoodEntry> findByTagsIn(@RequestParam("find") List<String> keywords);
 }
