@@ -8,6 +8,8 @@ import com.example.moodtracker.repository.MoodEntryRepository;
 import com.example.moodtracker.repository.TagRepository;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
