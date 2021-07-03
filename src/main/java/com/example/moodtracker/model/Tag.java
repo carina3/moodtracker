@@ -13,16 +13,16 @@ public class Tag {
     public Tag() {
     }
 
-    public Tag(String tag) {
-        this.keyword = tag;
+    public Tag(String keyword) {
+        this.keyword = keyword;
     }
 
     public String getKeyword() {
         return keyword;
     }
 
-    public void setKeyword(String tag) {
-        this.keyword = tag;
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 
     public void setId(Long id) {
@@ -39,5 +39,10 @@ public class Tag {
                 "id=" + id +
                 ", keyword='" + keyword + '\'' +
                 '}';
+    }
+
+    @PrePersist
+    public void prePersistLowercase() {
+        keyword = keyword.toLowerCase();
     }
 }

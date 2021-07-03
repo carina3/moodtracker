@@ -8,14 +8,12 @@ import com.example.moodtracker.repository.MoodEntryRepository;
 import com.example.moodtracker.repository.TagRepository;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 public class MoodController implements MoodOperations {
@@ -39,6 +37,7 @@ public class MoodController implements MoodOperations {
         Set<Tag> tagsInDatabase = new HashSet<>(tagRepository.findAll());
         Set<Tag> newTags = newMoodEntry.getTags();
 
+
         // Get tags that are already in database
 
         // From these tags, get id
@@ -53,13 +52,13 @@ public class MoodController implements MoodOperations {
 
 
     @Override
-    public MoodEntry findById(@PathVariable Long id) {
+    public MoodEntry findById(Long id) {
         return moodEntryRepository.findById(id)
                 .orElseThrow(() -> new MoodEntryNotFoundException(id));
     }
 
     @Override
-    public MoodEntry updateEntry(@PathVariable Long id, MoodEntry updatedMoodEntry) {
+    public MoodEntry updateEntry(Long id, MoodEntry updatedMoodEntry) {
         return moodEntryRepository.findById(id)
                 .map(moodEntry -> {
                     moodEntry.setMood(updatedMoodEntry.getMood());
@@ -75,11 +74,11 @@ public class MoodController implements MoodOperations {
 
     @Override
     public List<MoodEntry> findByMood(BaseMood moodToFind) {
-        return moodEntryRepository.findMoodEntryByMood(moodToFind);
+        return moodEntryRepository.findByMood(moodToFind);
     }
 
     @Override
-    public List<MoodEntry> findByTags() {
-        return null;
+    public List<MoodEntry> findByTagsIn(List<Tag> tags) {
+        return moodEntryRepository.findByTagsIn(tags);
     }
 }

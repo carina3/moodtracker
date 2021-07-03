@@ -1,7 +1,9 @@
 package com.example.moodtracker.model;
 
 public enum BaseMood {
+    HAPPY, NEUTRAL, UNHAPPY
 
+/*
     HAPPY(1),
     NEUTRAL(0),
     UNHAPPY(-1);
@@ -11,5 +13,6 @@ public enum BaseMood {
     private BaseMood(int value) {
         this.value = value;
     }
+*/
 
 }

@@ -3,30 +3,36 @@ package com.example.moodtracker.controller;
 
 import com.example.moodtracker.model.BaseMood;
 import com.example.moodtracker.model.MoodEntry;
+import com.example.moodtracker.model.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
-@RequestMapping(value = "/moodEntry",consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
 public interface MoodOperations {
 
-    @GetMapping
+    //GET moodEntry
+    @GetMapping("/moodEntry")
     List<MoodEntry> getAll();
 
-    @PostMapping()
+    //POST moodEntry
+    @PostMapping("/moodEntry")
     MoodEntry addEntry(@RequestBody MoodEntry newMoodEntry);
 
-    @GetMapping("/{id}")
+    //GET moodEntry/id
+    @GetMapping("/moodEntry/{id}")
     MoodEntry findById(@PathVariable Long id);
 
-    @PutMapping("/{id}")
+    @PutMapping("/moodEntry/{id}")
     MoodEntry updateEntry(@PathVariable Long id, MoodEntry newMoodEntry);
 
-    @GetMapping("/search")
-    List<MoodEntry> findByMood(@RequestParam("mood") BaseMood moodToFind);
+    //GET search/mood/find
+    @GetMapping("/search/mood")
+    List<MoodEntry> findByMood(@RequestParam("find") BaseMood moodToFind);
 
-    @GetMapping("/findByTags")
-    List<MoodEntry> findByTags();
+    //GET search/tag/find
+    @GetMapping("/search/tags")
+    List<MoodEntry> findByTagsIn(@RequestParam("find") List<Tag> tags);
 }

@@ -10,7 +10,8 @@ public class MoodEntry {
     @GeneratedValue
     private Long id;
 
-    @Enumerated(EnumType.ORDINAL)
+    //@Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private BaseMood mood;
     private String description;
 
@@ -79,4 +80,5 @@ public class MoodEntry {
                 ", creationTime=" + creationTime +
                 '}';
     }
+
 }
