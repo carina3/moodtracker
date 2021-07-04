@@ -16,5 +16,5 @@ public interface MoodEntryRepository extends JpaRepository<MoodEntry, Long> {
     List<MoodEntry> findByTagsIn(List<String> keywords);
 
     @Query("SELECT me FROM MoodEntry me WHERE me.creationTime BETWEEN :startDate AND :endDate")
-    List<MoodEntry> findMoodEntriesByCreationTimeIsBetween(LocalData startDate, LocalDate endDate);
+    List<MoodEntry> findMoodEntriesByCreationTimeIsBetween(LocalDate startDate, LocalDate endDate);
 }

@@ -25,6 +25,8 @@ public class MoodService {
 
     private final MoodEntryRepository moodEntryRepository;
     private final TagRepository tagRepository;
+    private final long WEEK = 7;
+    private final long MONTH = 30;
 
     public MoodService(MoodEntryRepository moodEntryRepository, TagRepository tagRepository) {
         this.moodEntryRepository = moodEntryRepository;
@@ -86,10 +88,8 @@ public class MoodService {
     }
 
     public List<MoodEntry> fetchEntriesInLastWeek() {
-        Instant currentTime = Instant.now();
         LocalDate now = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).toLocalDate();
-        LocalDate lastWeek = new LocalDate();
-        //TODO: comp 7 days backwards
-        return moodEntryRepository.findMoodEntriesByCreationTimeIsBetween(now, lastWeek);
+        LocalDate oneWeekAgo = now.minusDays(WEEK);
+        return moodEntryRepository.findMoodEntriesByCreationTimeIsBetween(now, oneWeekAgo);
     }
 }

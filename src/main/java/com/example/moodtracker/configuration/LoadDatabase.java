@@ -32,18 +32,30 @@ public class LoadDatabase {
         Set<Tag> tags3 = new HashSet<>();
         tags1.add(new Tag("bored"));
 
+        Set<Tag> tags4 = new HashSet<>();
+        tags4.add(new Tag("love"));
+
+        Set<Tag> tags5 = new HashSet<>();
+        tags5.add(new Tag("whatever"));
+
         MoodEntry entry1 = new MoodEntry(BaseMood.UNHAPPY, "couldn't sleep", tags1);
         MoodEntry entry2 = new MoodEntry(BaseMood.HAPPY, "got a raise", tags2);
         MoodEntry entry3 = new MoodEntry(BaseMood.NEUTRAL, "don't know what to do", tags3);
+        MoodEntry entry4 = new MoodEntry(BaseMood.HAPPY, "had a great date", tags4);
+        MoodEntry entry5 = new MoodEntry(BaseMood.NEUTRAL, "today was okay", tags5);
 
         return args -> {
             log.info("Preloading " + tagRepository.saveAll(tags1));
             log.info("Preloading " + tagRepository.saveAll(tags2));
             log.info("Preloading " + tagRepository.saveAll(tags3));
+            log.info("Preloading " + tagRepository.saveAll(tags4));
+            log.info("Preloading " + tagRepository.saveAll(tags5));
 
             log.info("Preloading " + moodEntryRepository.save(entry1));
             log.info("Preloading " + moodEntryRepository.save(entry2));
             log.info("Preloading " + moodEntryRepository.save(entry3));
+            log.info("Preloading " + moodEntryRepository.save(entry4));
+            log.info("Preloading " + moodEntryRepository.save(entry5));
         };
     }
 }
