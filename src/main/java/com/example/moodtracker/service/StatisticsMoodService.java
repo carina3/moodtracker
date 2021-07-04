@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class StatisticsMoodService {
     private final Logger logger = LoggerFactory.getLogger(StatisticsMoodService.class);
@@ -24,27 +26,45 @@ public class StatisticsMoodService {
         return statisticsMood;
     }
 
-    
+    //TODO: was wenn entries leer? error handling machen
     public Statistics computeOverviewByWeek() {
         //TODO: query entries by time
         var entries = moodService.fetchEntriesInLastWeek();
-        statisticsMood.setMoodEntries(entries);
-        statisticsMood.computeOverview();
+        if (entries.size() > 0) {
+            statisticsMood.setMoodEntries(entries);
+            statisticsMood.computeOverview();
+        }
         return statisticsMood;
     }
 
-    
+    //TODO: redundancy and error handlingn
     public Statistics computeOverviewByMonth() {
-        return null;
+        var entries = moodService.fetchEntriesInLastMonth();
+        if (entries.size() > 0) {
+            statisticsMood.setMoodEntries(entries);
+            statisticsMood.computeOverview();
+        }
+        return statisticsMood;
     }
 
-    
+    //TODO: redundancy and error handlingn
     public Statistics computeOverviewByYear() {
-        return null;
+        var entries = moodService.fetchEntriesInLastYear();
+        if (entries.size() > 0) {
+            statisticsMood.setMoodEntries(entries);
+            statisticsMood.computeOverview();
+        }
+        return statisticsMood;
     }
 
-    
-    public Statistics computeOverviewByCustomDate() {
-        return null;
+    public Statistics computeOverviewByCustomDate(LocalDate startDate, LocalDate endDate) {
+        var entries = moodService.fetchEntriesInCustomDate(startDate, endDate);
+        if (entries.size() > 0) {
+            statisticsMood.setMoodEntries(entries);
+            statisticsMood.computeOverview();
+        }
+        return statisticsMood;
     }
+
+
 }

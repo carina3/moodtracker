@@ -2,8 +2,11 @@ package com.example.moodtracker.controller;
 
 import com.example.moodtracker.model.BaseMood;
 import com.example.moodtracker.model.statistics.Statistics;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RequestMapping(value = "/statistics/mood", consumes = MediaType.APPLICATION_JSON_VALUE)
 public interface StatisticsMoodOperations {
@@ -14,17 +17,16 @@ public interface StatisticsMoodOperations {
 
 
     //GET search/tag/find
-    @GetMapping
+    @GetMapping("/month")
     Statistics computeOverviewByMonth();
     
-    @GetMapping
+    @GetMapping("/year")
     Statistics computeOverviewByYear();
 
-    @RequestMapping
+    @RequestMapping("/week")
     Statistics computeOverviewByWeek();
 
-    @GetMapping
-    Statistics computeOverviewByCustomDate();
-
-
+    @GetMapping("/custom")
+    Statistics computeOverviewByCustomDate(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate);
 }

@@ -14,9 +14,11 @@ public class StatisticsMood implements Statistics {
     private final Logger logger = LoggerFactory.getLogger(StatisticsMood.class);
 
     private List<MoodEntry> moodEntries;
-    private String avgMood;
-    private String bestMood;
-    private String worstMood;
+    private double avgMood;
+    private int bestMood;
+    private int worstMood;
+    private long count;
+    private long sum;
 
     public StatisticsMood() {
     }
@@ -27,9 +29,17 @@ public class StatisticsMood implements Statistics {
     }
 
     public void computeOverview() {
-        avgMood = computeAvgMood();
-        bestMood = computeBestMood();
-        worstMood = computeWorstMood();
+        var statistics = moodEntries
+                .stream()
+                .map(MoodEntry::getMood)
+                .map(BaseMood::getValue)
+                .mapToInt(d -> d)
+                .summaryStatistics();
+        avgMood =  statistics.getAverage();
+        bestMood = statistics.getMax();
+        worstMood = statistics.getMin();
+        count = statistics.getCount();
+        sum = statistics.getSum();
     }
 
     private String computeWorstMood() {
@@ -61,7 +71,7 @@ public class StatisticsMood implements Statistics {
                 .stream()
                 .map(MoodEntry::getMood)
                 .map(BaseMood::getValue)
-                .mapToInt(v -> v)
+                .mapToDouble(d -> d)
                 .average().orElseThrow(NoSuchElementException::new);
 
         // TODO: map double to some mood
@@ -77,25 +87,34 @@ public class StatisticsMood implements Statistics {
         this.moodEntries = moodEntries;
     }
 
-    public String getAvgMood() {
+    public double getAvgMood() {
         return avgMood;
     }
 
-    public String getBestMood() {
+    public int getBestMood() {
         return bestMood;
     }
 
-    public String getWorstMood() {
+    public int getWorstMood() {
         return worstMood;
     }
 
+    public long getCount() {
+        return count;
+    }
+
+    public long getSum() {
+        return sum;
+    }
 
     @Override
     public String toString() {
         return "StatisticsMood{" +
-                "avgMood='" + avgMood + '\'' +
-                ", bestMood='" + bestMood + '\'' +
-                ", worstMood='" + worstMood + '\'' +
+                "avgMood=" + avgMood +
+                ", bestMood=" + bestMood +
+                ", worstMood=" + worstMood +
+                ", count=" + count +
+                ", sum=" + sum +
                 '}';
     }
 }

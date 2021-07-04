@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 @RestController
 public class StatisticsMoodController implements StatisticsMoodOperations {
     private final Logger logger = LoggerFactory.getLogger(StatisticsMoodController.class);
@@ -24,26 +26,22 @@ public class StatisticsMoodController implements StatisticsMoodOperations {
     }
 
     @Override
-    @RequestMapping("/week")
     public Statistics computeOverviewByWeek() {
         return service.computeOverviewByWeek();
     }
 
     @Override
-    @RequestMapping("/month")
     public Statistics computeOverviewByMonth() {
         return service.computeOverviewByMonth();
     }
 
     @Override
-    @RequestMapping("/year")
     public Statistics computeOverviewByYear() {
         return service.computeOverviewByYear();
     }
 
     @Override
-    @RequestMapping("/custom")
-    public Statistics computeOverviewByCustomDate() {
-        return null;
+    public Statistics computeOverviewByCustomDate(LocalDate startDate, LocalDate endDate) {
+        return service.computeOverviewByCustomDate(startDate, endDate);
     }
 }

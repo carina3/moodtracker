@@ -25,8 +25,9 @@ public class MoodService {
 
     private final MoodEntryRepository moodEntryRepository;
     private final TagRepository tagRepository;
-    private final long WEEK = 7;
-    private final long MONTH = 30;
+    private final long ONE_WEEK = 1;
+    private final long ONE_MONTH = 1;
+    private final long ONE_YEAR = 1;
 
     public MoodService(MoodEntryRepository moodEntryRepository, TagRepository tagRepository) {
         this.moodEntryRepository = moodEntryRepository;
@@ -89,7 +90,23 @@ public class MoodService {
 
     public List<MoodEntry> fetchEntriesInLastWeek() {
         LocalDate now = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).toLocalDate();
-        LocalDate oneWeekAgo = now.minusDays(WEEK);
-        return moodEntryRepository.findMoodEntriesByCreationTimeIsBetween(now, oneWeekAgo);
+        LocalDate oneWeekAgo = now.minusWeeks(ONE_WEEK);
+        return moodEntryRepository.findMoodEntriesByCreationTimeIsBetween(oneWeekAgo, now);
+    }
+
+    public List<MoodEntry> fetchEntriesInLastMonth() {
+        LocalDate now = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).toLocalDate();
+        LocalDate oneMonthAgo = now.minusMonths(ONE_MONTH);
+        return moodEntryRepository.findMoodEntriesByCreationTimeIsBetween(oneMonthAgo, now);
+    }
+
+    public List<MoodEntry> fetchEntriesInLastYear() {
+        LocalDate now = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).toLocalDate();
+        LocalDate oneYearAgo = now.minusYears(ONE_YEAR);
+        return moodEntryRepository.findMoodEntriesByCreationTimeIsBetween(oneYearAgo, now);
+    }
+
+    public List<MoodEntry> fetchEntriesInCustomDate(LocalDate startDate, LocalDate endDate) {
+        return moodEntryRepository.findMoodEntriesByCreationTimeIsBetween(startDate, endDate);
     }
 }
