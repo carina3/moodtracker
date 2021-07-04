@@ -20,12 +20,17 @@ public class StatisticsMoodService {
 
     public Statistics computeOverview() {
         statisticsMood.setMoodEntries(moodService.fetchAllEntries());
-        return statisticsMood.computeOverview();
+        statisticsMood.computeOverview();
+        return statisticsMood;
     }
 
     
     public Statistics computeOverviewByWeek() {
-        return null;
+        //TODO: query entries by time
+        var entries = moodService.fetchEntriesInLastWeek();
+        statisticsMood.setMoodEntries(entries);
+        statisticsMood.computeOverview();
+        return statisticsMood;
     }
 
     

@@ -2,12 +2,15 @@ package com.example.moodtracker.controller;
 
 import com.example.moodtracker.model.statistics.Statistics;
 import com.example.moodtracker.service.StatisticsMoodService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class StatisticsMoodController implements StatisticsMoodOperations {
-    StatisticsMoodService service;
+    private final Logger logger = LoggerFactory.getLogger(StatisticsMoodController.class);
+    private final StatisticsMoodService service;
 
     public StatisticsMoodController(StatisticsMoodService service) {
         this.service = service;
@@ -15,7 +18,9 @@ public class StatisticsMoodController implements StatisticsMoodOperations {
 
     @Override
     public Statistics computeOverview() {
-        return service.computeOverview();
+        var overview = service.computeOverview();
+        logger.info("Statistics: " + overview.toString());
+        return overview;
     }
 
     @Override

@@ -4,10 +4,12 @@ import com.example.moodtracker.model.BaseMood;
 import com.example.moodtracker.model.MoodEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Component
 public class StatisticsMood implements Statistics {
     private final Logger logger = LoggerFactory.getLogger(StatisticsMood.class);
 
@@ -24,11 +26,10 @@ public class StatisticsMood implements Statistics {
 
     }
 
-    public StatisticsMood computeOverview() {
+    public void computeOverview() {
         avgMood = computeAvgMood();
         bestMood = computeBestMood();
         worstMood = computeWorstMood();
-        return this;
     }
 
     private String computeWorstMood() {
@@ -65,7 +66,7 @@ public class StatisticsMood implements Statistics {
 
         // TODO: map double to some mood
         //  String worstMood = BaseMood.mapValueToName(avg);
-        return avgMood;
+        return ""+avg;
     }
 
     public List<MoodEntry> getMoodEntries() {
@@ -76,5 +77,25 @@ public class StatisticsMood implements Statistics {
         this.moodEntries = moodEntries;
     }
 
+    public String getAvgMood() {
+        return avgMood;
+    }
 
+    public String getBestMood() {
+        return bestMood;
+    }
+
+    public String getWorstMood() {
+        return worstMood;
+    }
+
+
+    @Override
+    public String toString() {
+        return "StatisticsMood{" +
+                "avgMood='" + avgMood + '\'' +
+                ", bestMood='" + bestMood + '\'' +
+                ", worstMood='" + worstMood + '\'' +
+                '}';
+    }
 }

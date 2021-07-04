@@ -5,6 +5,7 @@ import com.example.moodtracker.model.MoodEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface MoodEntryRepository extends JpaRepository<MoodEntry, Long> {
@@ -13,4 +14,7 @@ public interface MoodEntryRepository extends JpaRepository<MoodEntry, Long> {
 
     @Query(value = "SELECT me FROM MoodEntry me INNER JOIN me.tags tags WHERE tags.keyword in :keywords")
     List<MoodEntry> findByTagsIn(List<String> keywords);
+
+    @Query("SELECT me FROM MoodEntry me WHERE me.creationTime BETWEEN :startDate AND :endDate")
+    List<MoodEntry> findMoodEntriesByCreationTimeIsBetween(LocalData startDate, LocalDate endDate);
 }

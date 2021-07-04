@@ -11,6 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class MoodService {
 
 
         tagRepository.saveAll(newMoodEntry.getTags());
-        newMoodEntry.setCreationTime(Instant.now());
+        newMoodEntry.setCreationTime(LocalDate.now());
         return moodEntryRepository.save(newMoodEntry);
     }
 
@@ -82,4 +85,11 @@ public class MoodService {
         return moodEntryRepository.findByTagsIn(keywords);
     }
 
+    public List<MoodEntry> fetchEntriesInLastWeek() {
+        Instant currentTime = Instant.now();
+        LocalDate now = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).toLocalDate();
+        LocalDate lastWeek = new LocalDate();
+        //TODO: comp 7 days backwards
+        return moodEntryRepository.findMoodEntriesByCreationTimeIsBetween(now, lastWeek);
+    }
 }

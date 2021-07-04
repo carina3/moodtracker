@@ -2,6 +2,9 @@ package com.example.moodtracker.model;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 
 @Entity
@@ -16,7 +19,7 @@ public class MoodEntry {
 
     @ManyToMany
     private Set<Tag> tags = new HashSet<>();
-    private Instant creationTime;
+    private LocalDate creationTime;
 
     public MoodEntry() {
     }
@@ -26,7 +29,7 @@ public class MoodEntry {
         this.mood = mood;
         this.description = description;
         this.tags = tags;
-        creationTime = Instant.now();
+        creationTime = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).toLocalDate();
     }
 
     public Long getId() {
@@ -45,7 +48,7 @@ public class MoodEntry {
         this.mood = mood;
     }
 
-    public Instant getCreationTime() {
+    public LocalDate getCreationTime() {
         return creationTime;
     }
 
@@ -65,7 +68,7 @@ public class MoodEntry {
         this.tags = tags;
     }
 
-    public void setCreationTime(Instant creationTime) {
+    public void setCreationTime(LocalDate creationTime) {
         this.creationTime = creationTime;
     }
 
