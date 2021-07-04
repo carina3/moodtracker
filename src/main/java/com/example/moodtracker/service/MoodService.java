@@ -29,7 +29,7 @@ public class MoodService {
     }
 
     
-    public List<MoodEntry> getAll() {
+    public List<MoodEntry> fetchAllEntries() {
         return moodEntryRepository.findAll();
     }
 

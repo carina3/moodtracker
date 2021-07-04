@@ -10,8 +10,7 @@ public class MoodEntry {
     @GeneratedValue
     private Long id;
 
-    //@Enumerated(EnumType.ORDINAL)
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private BaseMood mood;
     private String description;
 
