@@ -63,8 +63,12 @@ public class MoodService {
                 .orElseThrow(() -> new MoodEntryNotFoundException(id));
     }
 
-    
+
     public MoodEntry updateEntry(Long id, MoodEntry updatedMoodEntry) {
+        //FIXME: only save tags when not already contained in by
+        //FIXME: problem how do entries point to their tags? idk
+        tagRepository.saveAll(updatedMoodEntry.getTags());
+
         return moodEntryRepository.findById(id)
                 .map(moodEntry -> {
                     moodEntry.setMood(updatedMoodEntry.getMood());
@@ -72,10 +76,7 @@ public class MoodService {
                     moodEntry.setTags(updatedMoodEntry.getTags());
                     return moodEntryRepository.save(moodEntry);
                 })
-                .orElseGet(() -> {
-                    updatedMoodEntry.setId(id);
-                    return moodEntryRepository.save(updatedMoodEntry);
-                });
+                .orElseThrow(() -> new MoodEntryNotFoundException(id));
     }
 
     

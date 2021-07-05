@@ -4,10 +4,12 @@ import com.example.moodtracker.model.BaseMood;
 import com.example.moodtracker.model.MoodEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@RepositoryRestResource
 public interface MoodEntryRepository extends JpaRepository<MoodEntry, Long> {
 
     List<MoodEntry> findByMood(BaseMood mood);
