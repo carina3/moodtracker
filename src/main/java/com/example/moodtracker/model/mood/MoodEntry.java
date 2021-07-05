@@ -1,4 +1,6 @@
-package com.example.moodtracker.model;
+package com.example.moodtracker.model.mood;
+
+import com.example.moodtracker.model.tag.Tag;
 
 import javax.persistence.*;
 import java.time.Instant;

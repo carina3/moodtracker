@@ -1,6 +1,5 @@
-package com.example.moodtracker.controller;
+package com.example.moodtracker.controller.statistics;
 
-import com.example.moodtracker.model.BaseMood;
 import com.example.moodtracker.model.statistics.Statistics;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;

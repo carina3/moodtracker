@@ -1,13 +1,12 @@
 package com.example.moodtracker.model.statistics;
 
-import com.example.moodtracker.model.BaseMood;
-import com.example.moodtracker.model.MoodEntry;
+import com.example.moodtracker.model.mood.BaseMood;
+import com.example.moodtracker.model.mood.MoodEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Component
 public class StatisticsMood implements Statistics {

@@ -1,7 +1,7 @@
 package com.example.moodtracker.repository;
 
-import com.example.moodtracker.model.BaseMood;
-import com.example.moodtracker.model.MoodEntry;
+import com.example.moodtracker.model.mood.BaseMood;
+import com.example.moodtracker.model.mood.MoodEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

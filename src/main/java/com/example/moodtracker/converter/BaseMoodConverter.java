@@ -1,6 +1,6 @@
 package com.example.moodtracker.converter;
 
-import com.example.moodtracker.model.BaseMood;
+import com.example.moodtracker.model.mood.BaseMood;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

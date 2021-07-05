@@ -1,4 +1,4 @@
-package com.example.moodtracker.controller;
+package com.example.moodtracker.controller.statistics;
 
 import com.example.moodtracker.model.statistics.Statistics;
 import com.example.moodtracker.service.StatisticsMoodService;

@@ -1,7 +1,7 @@
 package com.example.moodtracker.assembler;
 
-import com.example.moodtracker.controller.MoodController;
-import com.example.moodtracker.model.MoodEntry;
+import com.example.moodtracker.controller.mood.MoodController;
+import com.example.moodtracker.model.mood.MoodEntry;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;

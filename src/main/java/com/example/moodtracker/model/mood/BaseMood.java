@@ -1,4 +1,4 @@
-package com.example.moodtracker.model;
+package com.example.moodtracker.model.mood;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

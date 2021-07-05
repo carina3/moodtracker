@@ -1,4 +1,4 @@
-package com.example.moodtracker.model;
+package com.example.moodtracker.model.tag;
 
 import javax.persistence.*;
 

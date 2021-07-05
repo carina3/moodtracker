@@ -1,9 +1,9 @@
 package com.example.moodtracker.service;
 
 import com.example.moodtracker.exception.MoodEntryNotFoundException;
-import com.example.moodtracker.model.BaseMood;
-import com.example.moodtracker.model.MoodEntry;
-import com.example.moodtracker.model.Tag;
+import com.example.moodtracker.model.mood.BaseMood;
+import com.example.moodtracker.model.mood.MoodEntry;
+import com.example.moodtracker.model.tag.Tag;
 import com.example.moodtracker.repository.MoodEntryRepository;
 import com.example.moodtracker.repository.TagRepository;
 import org.slf4j.Logger;

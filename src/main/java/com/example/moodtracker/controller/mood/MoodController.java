@@ -1,8 +1,8 @@
-package com.example.moodtracker.controller;
+package com.example.moodtracker.controller.mood;
 
 import com.example.moodtracker.assembler.MoodEntryModelAssembler;
-import com.example.moodtracker.model.BaseMood;
-import com.example.moodtracker.model.MoodEntry;
+import com.example.moodtracker.model.mood.BaseMood;
+import com.example.moodtracker.model.mood.MoodEntry;
 import com.example.moodtracker.service.MoodService;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

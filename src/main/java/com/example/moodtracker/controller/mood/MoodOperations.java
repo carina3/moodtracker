@@ -1,8 +1,8 @@
-package com.example.moodtracker.controller;
+package com.example.moodtracker.controller.mood;
 
 
-import com.example.moodtracker.model.BaseMood;
-import com.example.moodtracker.model.MoodEntry;
+import com.example.moodtracker.model.mood.BaseMood;
+import com.example.moodtracker.model.mood.MoodEntry;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
