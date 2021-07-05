@@ -28,7 +28,8 @@ public class StatisticsMood implements Statistics {
 
     }
 
-    public void computeOverview() {
+    @Override
+    public void computeOverviewFrom() {
         var statistics = moodEntries
                 .stream()
                 .map(MoodEntry::getMood)
@@ -42,48 +43,11 @@ public class StatisticsMood implements Statistics {
         sum = statistics.getSum();
     }
 
-    private String computeWorstMood() {
-        int worst = moodEntries
-                .stream()
-                .map(MoodEntry::getMood)
-                .map(BaseMood::getValue)
-                .mapToInt(v -> v)
-                .min().orElseThrow(NoSuchElementException::new);
-
-        String worstMood = BaseMood.mapValueToName(worst);
-        return worstMood;
-    }
-
-    private String computeBestMood() {
-        int best = moodEntries
-                .stream()
-                .map(MoodEntry::getMood)
-                .map(BaseMood::getValue)
-                .mapToInt(v -> v)
-                .max().orElseThrow(NoSuchElementException::new);
-
-        String bestMood = BaseMood.mapValueToName(best);
-        return bestMood;
-    }
-
-    private String computeAvgMood() {
-        double avg = moodEntries
-                .stream()
-                .map(MoodEntry::getMood)
-                .map(BaseMood::getValue)
-                .mapToDouble(d -> d)
-                .average().orElseThrow(NoSuchElementException::new);
-
-        // TODO: map double to some mood
-        //  String worstMood = BaseMood.mapValueToName(avg);
-        return ""+avg;
-    }
-
-    public List<MoodEntry> getMoodEntries() {
+    public List<MoodEntry> getEntries() {
         return moodEntries;
     }
 
-    public void setMoodEntries(List<MoodEntry> moodEntries) {
+    public void setEntries(List<MoodEntry> moodEntries) {
         this.moodEntries = moodEntries;
     }
 

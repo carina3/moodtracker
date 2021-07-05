@@ -3,7 +3,8 @@ package com.example.moodtracker.controller;
 
 import com.example.moodtracker.model.BaseMood;
 import com.example.moodtracker.model.MoodEntry;
-import com.example.moodtracker.model.Tag;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public interface MoodOperations {
 
     //GET moodEntry
     @GetMapping("/moodEntry")
-    List<MoodEntry> getAll();
+    CollectionModel<EntityModel<MoodEntry>> getAll();
 
     //POST moodEntry
     @PostMapping("/moodEntry")
@@ -23,16 +24,16 @@ public interface MoodOperations {
 
     //GET moodEntry/id
     @GetMapping("/moodEntry/{id}")
-    MoodEntry findById(@PathVariable Long id);
+    EntityModel<MoodEntry> findById(@PathVariable Long id);
 
     @PutMapping("/moodEntry/{id}")
     MoodEntry updateEntry(@PathVariable Long id, MoodEntry newMoodEntry);
 
     //GET search/mood/find
     @GetMapping("/search/mood")
-    List<MoodEntry> findByMood(@RequestParam("find") BaseMood moodToFind);
+    CollectionModel<EntityModel<MoodEntry>> findByMood(@RequestParam("find") BaseMood moodToFind);
 
     //GET search/tag/find
     @GetMapping("/search/tags")
-    List<MoodEntry> findByTagsIn(@RequestParam("find") List<String> keywords);
+    CollectionModel<EntityModel<MoodEntry>> findByTagsIn(@RequestParam("find") List<String> keywords);
 }

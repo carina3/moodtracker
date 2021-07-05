@@ -20,48 +20,48 @@ public class StatisticsMoodService {
         statisticsMood = new StatisticsMood();
     }
 
-    public Statistics computeOverview() {
-        statisticsMood.setMoodEntries(moodService.fetchAllEntries());
-        statisticsMood.computeOverview();
+    public Statistics computeOverviewMood() {
+        statisticsMood.setEntries(moodService.fetchAllEntries());
+        statisticsMood.computeOverviewFrom();
         return statisticsMood;
     }
 
     //TODO: was wenn entries leer? error handling machen
-    public Statistics computeOverviewByWeek() {
+    public Statistics computeOverviewByWeekMood() {
         //TODO: query entries by time
         var entries = moodService.fetchEntriesInLastWeek();
         if (entries.size() > 0) {
-            statisticsMood.setMoodEntries(entries);
-            statisticsMood.computeOverview();
+            statisticsMood.setEntries(entries);
+            statisticsMood.computeOverviewFrom();
         }
         return statisticsMood;
     }
 
     //TODO: redundancy and error handlingn
-    public Statistics computeOverviewByMonth() {
+    public Statistics computeOverviewByMonthMood() {
         var entries = moodService.fetchEntriesInLastMonth();
         if (entries.size() > 0) {
-            statisticsMood.setMoodEntries(entries);
-            statisticsMood.computeOverview();
+            statisticsMood.setEntries(entries);
+            statisticsMood.computeOverviewFrom();
         }
         return statisticsMood;
     }
 
     //TODO: redundancy and error handlingn
-    public Statistics computeOverviewByYear() {
+    public Statistics computeOverviewByYearMood() {
         var entries = moodService.fetchEntriesInLastYear();
         if (entries.size() > 0) {
-            statisticsMood.setMoodEntries(entries);
-            statisticsMood.computeOverview();
+            statisticsMood.setEntries(entries);
+            statisticsMood.computeOverviewFrom();
         }
         return statisticsMood;
     }
 
-    public Statistics computeOverviewByCustomDate(LocalDate startDate, LocalDate endDate) {
+    public Statistics computeOverviewByCustomDateMood(LocalDate startDate, LocalDate endDate) {
         var entries = moodService.fetchEntriesInCustomDate(startDate, endDate);
         if (entries.size() > 0) {
-            statisticsMood.setMoodEntries(entries);
-            statisticsMood.computeOverview();
+            statisticsMood.setEntries(entries);
+            statisticsMood.computeOverviewFrom();
         }
         return statisticsMood;
     }
