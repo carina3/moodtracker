@@ -42,6 +42,21 @@ public class MoodController implements MoodOperations {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
 
+        return generateResponseEntityWithSupportForEmptyEmbeddedArray(entries);
+    }
+
+    // Support for rendering empty embedded arrays
+    // Source: https://stackoverflow.com/questions/30286795/how-to-force-spring-hateoas-resources-to-render-an-empty-embedded-array
+    private ResponseEntity<?> generateResponseEntityWithSupportForEmptyEmbeddedArray(List<EntityModel<MoodEntry>> entries) {
+        if(entries.isEmpty()) {
+            EmbeddedWrappers wrappers = new EmbeddedWrappers(false);
+            EmbeddedWrapper wrapper = wrappers.emptyCollectionOf(MoodEntry.class);
+            CollectionModel<EmbeddedWrapper> resources = CollectionModel.of(Arrays.asList(wrapper),
+                    linkTo(methodOn(MoodController.class).getAll()).withSelfRel()); //FIXME: self rel points to invalid resource?
+            return ResponseEntity
+                    .ok(resources);
+        }
+
         CollectionModel<EntityModel<MoodEntry>> collectionModel = CollectionModel.of(entries,
                 linkTo(methodOn(MoodController.class).getAll()).withSelfRel());
 
@@ -100,21 +115,6 @@ public class MoodController implements MoodOperations {
                         .map(assembler::toModel)
                         .collect(Collectors.toList());
 
-        // Render empty embedded array
-        // Source: https://stackoverflow.com/questions/30286795/how-to-force-spring-hateoas-resources-to-render-an-empty-embedded-array
-        if(entries.isEmpty()) {
-            EmbeddedWrappers wrappers = new EmbeddedWrappers(false);
-            EmbeddedWrapper wrapper = wrappers.emptyCollectionOf(MoodEntry.class);
-            CollectionModel<EmbeddedWrapper> resources = CollectionModel.of(Arrays.asList(wrapper),
-                    linkTo(methodOn(MoodController.class).getAll()).withSelfRel());
-            return ResponseEntity
-                    .ok(resources);
-        }
-
-        CollectionModel<EntityModel<MoodEntry>> collectionModel = CollectionModel.of(entries,
-                linkTo(methodOn(MoodController.class).getAll()).withSelfRel());
-        
-        return ResponseEntity
-                .ok(collectionModel);
+        return generateResponseEntityWithSupportForEmptyEmbeddedArray(entries); //TODO: find more suitable name
     }
 }
