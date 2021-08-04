@@ -24,6 +24,7 @@ public class MoodEntry {
     private LocalDate creationTime;
 
     public MoodEntry() {
+        creationTime = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).toLocalDate();
     }
 
     public MoodEntry(BaseMood mood, String description, Set<Tag> tags) {
@@ -31,7 +32,6 @@ public class MoodEntry {
         this.mood = mood;
         this.description = description;
         this.tags = tags;
-        creationTime = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC).toLocalDate();
     }
 
     public Long getId() {
@@ -85,4 +85,16 @@ public class MoodEntry {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoodEntry moodEntry = (MoodEntry) o;
+        return mood == moodEntry.mood && Objects.equals(description, moodEntry.description) && Objects.equals(tags, moodEntry.tags) && Objects.equals(creationTime, moodEntry.creationTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mood, description, tags, creationTime);
+    }
 }

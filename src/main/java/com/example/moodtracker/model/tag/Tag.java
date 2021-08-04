@@ -1,6 +1,7 @@
 package com.example.moodtracker.model.tag;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Tag {
@@ -44,5 +45,19 @@ public class Tag {
     @PrePersist
     public void prePersistLowercase() {
         keyword = keyword.toLowerCase();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tag tag = (Tag) o;
+        return Objects.equals(keyword, tag.keyword);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(keyword);
     }
 }

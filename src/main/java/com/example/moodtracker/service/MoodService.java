@@ -34,30 +34,36 @@ public class MoodService {
         this.tagRepository = tagRepository;
     }
 
-    
+
     public List<MoodEntry> fetchAllEntries() {
         return moodEntryRepository.findAll();
     }
 
     public MoodEntry addEntry(MoodEntry newMoodEntry) {
-        Set<Tag> tagsInDatabase = new HashSet<>(tagRepository.findAll());
-        Set<Tag> newTags = newMoodEntry.getTags();
 
+        Set<Tag> tagEntries = toTagEntries(newMoodEntry.getTags());
 
-        // Get tags that are already in database
-
-        // From these tags, get id
-
-        // Assign old and new tags to moodentry, but not duplicates, but how?
-
-
-        tagRepository.saveAll(newMoodEntry.getTags());
+        newMoodEntry.setTags(tagEntries);
         newMoodEntry.setCreationTime(LocalDate.now());
         return moodEntryRepository.save(newMoodEntry);
     }
 
+    private Set<Tag> toTagEntries(Set<Tag> tags) {
+        Set<Tag> tagEntries = new HashSet<>();
+        for (Tag tag : tags) {
 
-    
+            Tag existingTag = tagRepository.findByKeywordIgnoreCase(tag.getKeyword());
+            if (existingTag == null) {
+                existingTag = tagRepository.save(tag);
+            }
+
+            tagEntries.add(existingTag);
+        }
+        return tagEntries;
+
+    }
+
+
     public MoodEntry findById(Long id) {
         return moodEntryRepository.findById(id)
                 .orElseThrow(() -> new MoodEntryNotFoundException(id));
@@ -79,12 +85,12 @@ public class MoodService {
                 .orElseThrow(() -> new MoodEntryNotFoundException(id));
     }
 
-    
+
     public List<MoodEntry> findByMood(BaseMood moodToFind) {
         return moodEntryRepository.findByMood(moodToFind);
     }
 
-    
+
     public List<MoodEntry> findByTagsIn(List<String> keywords) {
         return moodEntryRepository.findByTagsIn(keywords);
     }

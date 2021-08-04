@@ -22,7 +22,7 @@ public class StatisticsMoodService {
 
     public Statistics computeOverviewMood() {
         statisticsMood.setEntries(moodService.fetchAllEntries());
-        statisticsMood.computeOverviewFrom();
+        statisticsMood.computeOverviewFrom(); //TODO: rename method to be more expressive
         return statisticsMood;
     }
 
