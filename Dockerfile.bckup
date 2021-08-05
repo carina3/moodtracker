@@ -1,0 +1,5 @@
+FROM openjdk:11
+MAINTAINER carwalk
+COPY /target/moodtracker-1.0.jar moodtracker-1.0.jar
+ENV MYSQL_HOST=mysql-server
+ENTRYPOINT ["java", "-jar", "/moodtracker-1.0.jar"]
