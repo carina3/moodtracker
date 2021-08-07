@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
-@RequestMapping(value = "/statistics", consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/statistics", consumes = MediaType.APPLICATION_JSON_VALUE)
 public interface StatisticsOperations {
     
     @GetMapping("/mood")

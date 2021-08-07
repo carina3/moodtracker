@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RequestMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api", consumes = MediaType.APPLICATION_JSON_VALUE)
 public interface MoodOperations {
 
     //GET moodEntry
-    @GetMapping("/moodEntry")
+    @GetMapping("/mood-entries")
     ResponseEntity<?> getAll();
 
     //POST moodEntry
-    @PostMapping("/moodEntry")
+    @PostMapping("/mood-entries")
     ResponseEntity addEntry(@RequestBody MoodEntry newMoodEntry);
 
     //GET moodEntry/id
-    @GetMapping("/moodEntry/{id}")
+    @GetMapping("/mood-entries/{id}")
     ResponseEntity<?> findById(@PathVariable Long id);
 
-    @PutMapping("/moodEntry/{id}")
+    @PutMapping("/mood-entries/{id}")
     ResponseEntity updateEntry(@PathVariable Long id, @RequestBody MoodEntry newMoodEntry);
 
     //GET search/mood/find

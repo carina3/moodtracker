@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-07T15:04:17.994Z
+__export_date: 2021-08-07T19:07:02.285Z
 __export_source: insomnia.desktop.app:v2020.2.2
 resources:
   - _id: req_586fa689030046839624add5fa941a56
@@ -343,13 +343,14 @@ resources:
     created: 1625287692120
     description: ""
     headers:
-      - id: pair_f707e25eef304d858733a51b259ca72e
+      - disabled: false
+        id: pair_f707e25eef304d858733a51b259ca72e
         name: Content-Type
         value: application/json
     isPrivate: false
     metaSortKey: -1609317497731.375
     method: GET
-    modified: 1625511419053
+    modified: 1628362326675
     name: GET mood entries
     parameters: []
     parentId: fld_14a50dc148264905887c2c673d39d5ec
@@ -359,7 +360,7 @@ resources:
     settingRebuildPath: true
     settingSendCookies: true
     settingStoreCookies: true
-    url: "{{ base_url  }}/moodEntry"
+    url: "{{ base_url  }}/mood-entries"
     _type: request
   - _id: fld_14a50dc148264905887c2c673d39d5ec
     created: 1625288076307
@@ -367,8 +368,8 @@ resources:
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1625288076307
-    modified: 1625288076307
-    name: moodEntry
+    modified: 1628361916408
+    name: mood-entries
     parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
     _type: request_group
   - _id: req_be0dd6dd62164ec7bcd59a3fdfc1a5c0
@@ -387,7 +388,7 @@ resources:
     isPrivate: false
     metaSortKey: -1605325136232.4688
     method: GET
-    modified: 1625847863103
+    modified: 1628362388705
     name: GET mood entry by ID
     parameters:
       - description: ""
@@ -401,7 +402,7 @@ resources:
     settingRebuildPath: true
     settingSendCookies: true
     settingStoreCookies: true
-    url: "{{ base_url  }}/moodEntry/hgjh"
+    url: "{{ base_url  }}/mood-entries/2"
     _type: request
   - _id: req_49284d9c88e847e583469d4a2cb39b52
     authentication:
@@ -413,11 +414,11 @@ resources:
       mimeType: application/json
       text: |-
         {
-            "mood": "UNHAPPY",
-            "description": "lost my keys",
+            "mood": "HAPPY",
+            "description": "ate a delicious cake today",
             "tags": [
               {
-                "keyword": "worried"
+                "keyword": "i love cake"
               }
             ]
           }
@@ -430,7 +431,7 @@ resources:
     isPrivate: false
     metaSortKey: -1601332774733.5625
     method: POST
-    modified: 1628167580362
+    modified: 1628362422111
     name: POST new mood entry
     parameters:
       - description: ""
@@ -444,7 +445,7 @@ resources:
     settingRebuildPath: true
     settingSendCookies: true
     settingStoreCookies: true
-    url: "{{ base_url  }}/moodEntry"
+    url: "{{ base_url  }}/mood-entries"
     _type: request
   - _id: req_ed93a141ea98432e95695da783cad9c4
     authentication: {}
@@ -469,7 +470,7 @@ resources:
     isPrivate: false
     metaSortKey: -1597340413234.6562
     method: PUT
-    modified: 1628167457485
+    modified: 1628362459473
     name: PUT update mood entry
     parameters: []
     parentId: fld_14a50dc148264905887c2c673d39d5ec
@@ -479,7 +480,7 @@ resources:
     settingRebuildPath: true
     settingSendCookies: true
     settingStoreCookies: true
-    url: "{{ base_url  }}/moodEntry/7"
+    url: "{{ base_url  }}/mood-entries/6"
     _type: request
   - _id: req_8119dbef8cab4f4283aa74d20eafd53c
     authentication: {}
@@ -594,10 +595,10 @@ resources:
     settingStoreCookies: true
     url: "{{ base_url  }}/search/mood"
     _type: request
-  - _id: req_53628916c6174b7f818bfe7970b68a48
+  - _id: req_111809dc5b8c449b998b808c09d42a6d
     authentication: {}
     body: {}
-    created: 1625286943827
+    created: 1628362538068
     description: ""
     headers:
       - description: ""
@@ -605,21 +606,17 @@ resources:
         name: Content-Type
         value: application/json
     isPrivate: false
-    metaSortKey: -1609317497756.375
+    metaSortKey: -1609317497747
     method: GET
-    modified: 1625482021616
-    name: GET findByTags
+    modified: 1628362568452
+    name: GET findByTags excited
     parameters:
       - description: ""
         id: pair_15907e502a7242f49680123304e9b6a7
         name: find
-        value: okay
+        value: excited
       - description: ""
-        id: pair_fbefafdb8c9c4b1f832af3c27737b2a4
-        name: ""
-        value: ""
-      - description: ""
-        id: pair_09167749b67e486cb518547b72495176
+        id: pair_8a367993777f4b4495a0503df1b5b945
         name: ""
         value: ""
       - description: ""
@@ -633,7 +630,7 @@ resources:
     settingRebuildPath: true
     settingSendCookies: true
     settingStoreCookies: true
-    url: "{{ base_url  }}search/tags"
+    url: "{{ base_url  }}/search/tags"
     _type: request
   - _id: env_9665b5425acdf904a0d4fa81112f7d6e1b9bd7ae
     color: null
@@ -652,13 +649,13 @@ resources:
         domain: localhost
         hostOnly: true
         httpOnly: true
-        id: "7117712682475632"
+        id: "7485628194291207"
         key: JSESSIONID
-        lastAccessed: 2021-08-07T14:39:19.113Z
+        lastAccessed: 2021-08-07T19:01:51.659Z
         path: /
-        value: 1038B5FC9B2F20023038E5763FF9978A
+        value: DC7DF0C31C6214264037A2F6B82420E1
     created: 1625286923157
-    modified: 1628347159114
+    modified: 1628362911659
     name: Default Jar
     parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
     _type: cookie_jar
@@ -674,13 +671,13 @@ resources:
     color: "#6144ce"
     created: 1625287612512
     data:
-      base_url: http://localhost:8080
+      base_url: http://localhost:8080/api
     dataPropertyOrder:
       "&":
         - base_url
     isPrivate: false
     metaSortKey: 1625287612512
-    modified: 1625508496786
+    modified: 1628362895726
     name: Development
     parentId: env_9665b5425acdf904a0d4fa81112f7d6e1b9bd7ae
     _type: environment
