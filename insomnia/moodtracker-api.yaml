@@ -1,0 +1,686 @@
+_type: export
+__export_format: 4
+__export_date: 2021-08-07T15:04:17.994Z
+__export_source: insomnia.desktop.app:v2020.2.2
+resources:
+  - _id: req_586fa689030046839624add5fa941a56
+    authentication:
+      disabled: false
+      password: password
+      type: basic
+      username: user
+    body: {}
+    created: 1628076354810
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1628076354810
+    method: GET
+    modified: 1628076802715
+    name: Get health
+    parameters: []
+    parentId: fld_9f7742c06beb40e7bd1fd425db843ac2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/actuator/health"
+    _type: request
+  - _id: fld_9f7742c06beb40e7bd1fd425db843ac2
+    created: 1628076347459
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628076347460
+    modified: 1628076347459
+    name: Actuator
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    _type: request_group
+  - _id: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    created: 1625286923077
+    description: ""
+    modified: 1625286923077
+    name: MoodTracker
+    parentId: null
+    scope: null
+    _type: workspace
+  - _id: req_5fd5409c0d3f43f08eb2ba10e9436e6b
+    authentication:
+      disabled: false
+      password: password
+      type: basic
+      username: user
+    body: {}
+    created: 1628076805948
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1626732973462
+    method: GET
+    modified: 1628076816869
+    name: Get info
+    parameters: []
+    parentId: fld_9f7742c06beb40e7bd1fd425db843ac2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/actuator/info"
+    _type: request
+  - _id: req_7297f053cef24f16a9179db7be7adbcc
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "mood": "HAPPY",
+            "description": "today was okay",
+            "tags": [
+              {
+                "keyword": "okay"
+              }
+            ]
+          }
+    created: 1625478542350
+    description: ""
+    headers:
+      - id: pair_f707e25eef304d858733a51b259ca72e
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1595344232485.2031
+    method: PUT
+    modified: 1625478544836
+    name: PUT update non-existent mood entry
+    parameters: []
+    parentId: fld_1014410035b54062a2d8f1f4760ba069
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/moodEntry/54"
+    _type: request
+  - _id: fld_1014410035b54062a2d8f1f4760ba069
+    created: 1625478511706
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1625389583679
+    modified: 1625478517186
+    name: errors
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    _type: request_group
+  - _id: req_7c280068c75a42f49b5094cea63532db
+    authentication: {}
+    body: {}
+    created: 1625481979184
+    description: ""
+    headers:
+      - description: ""
+        id: pair_86cd8d7e65f84b248a1eab319c87bd60
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1625389583654
+    method: GET
+    modified: 1625508519862
+    name: GET findByTags non-existent tag
+    parameters:
+      - description: ""
+        id: pair_15907e502a7242f49680123304e9b6a7
+        name: find
+        value: mist
+      - description: ""
+        id: pair_09167749b67e486cb518547b72495176
+        name: ""
+        value: ""
+      - description: ""
+        id: pair_552f8ea3e90148c99096b3920fbc598d
+        name: ""
+        value: ""
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/search/tags"
+    _type: request
+  - _id: req_d054b30b90c547e883003350bbe49f68
+    authentication: {}
+    body: {}
+    created: 1625484397475
+    description: ""
+    headers:
+      - description: ""
+        id: pair_86cd8d7e65f84b248a1eab319c87bd60
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1625389583641.5
+    method: GET
+    modified: 1625484415305
+    name: GET findByMood non-existent mood
+    parameters:
+      - description: ""
+        id: pair_15907e502a7242f49680123304e9b6a7
+        name: find
+        value: excited
+      - description: ""
+        id: pair_c8b425bd45514d8b8beb2557f24a9168
+        name: ""
+        value: ""
+      - description: ""
+        id: pair_552f8ea3e90148c99096b3920fbc598d
+        name: ""
+        value: ""
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/search/mood"
+    _type: request
+  - _id: req_e908ced7661b4785aa0353beea6315de
+    authentication: {}
+    body: {}
+    created: 1625389592114
+    description: ""
+    headers:
+      - description: ""
+        id: pair_b5f74604f3bb4104a394e71b5b2aa989
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1625389592114
+    method: GET
+    modified: 1625473662580
+    name: GET statistics on all entries
+    parameters: []
+    parentId: fld_4d4716dfce4746e7a2a5e5683ee2d8c1
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/statistics/mood"
+    _type: request
+  - _id: fld_4d4716dfce4746e7a2a5e5683ee2d8c1
+    created: 1625389583629
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1625389583629
+    modified: 1625389583629
+    name: statistics
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    _type: request_group
+  - _id: req_75b83948d3714c9286d064dbf04deaee
+    authentication: {}
+    body: {}
+    created: 1625419216646
+    description: ""
+    headers:
+      - description: ""
+        id: pair_b5f74604f3bb4104a394e71b5b2aa989
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1617353544947.6875
+    method: GET
+    modified: 1625473653524
+    name: GET statistics last week
+    parameters: []
+    parentId: fld_4d4716dfce4746e7a2a5e5683ee2d8c1
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/statistics/mood/week"
+    _type: request
+  - _id: req_1ecc6bc12f4049b89762b588fbed2b01
+    authentication: {}
+    body: {}
+    created: 1625473671881
+    description: ""
+    headers:
+      - description: ""
+        id: pair_b5f74604f3bb4104a394e71b5b2aa989
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1615344533156.1094
+    method: GET
+    modified: 1625473681276
+    name: GET statistics last month
+    parameters: []
+    parentId: fld_4d4716dfce4746e7a2a5e5683ee2d8c1
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/statistics/mood/month"
+    _type: request
+  - _id: req_3ecf894121434314bcfb702a393dd40e
+    authentication: {}
+    body: {}
+    created: 1625473675333
+    description: ""
+    headers:
+      - description: ""
+        id: pair_b5f74604f3bb4104a394e71b5b2aa989
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1614340027260.3203
+    method: GET
+    modified: 1625473697377
+    name: GET statistics last year
+    parameters: []
+    parentId: fld_4d4716dfce4746e7a2a5e5683ee2d8c1
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/statistics/mood/year"
+    _type: request
+  - _id: req_645b53087f424d72b5d043c43bc18db8
+    authentication: {}
+    body: {}
+    created: 1625423143388
+    description: ""
+    headers:
+      - description: ""
+        id: pair_b5f74604f3bb4104a394e71b5b2aa989
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1613335521364.5312
+    method: GET
+    modified: 1625473639216
+    name: GET statistics custom date
+    parameters:
+      - description: ""
+        id: pair_3dd22828259f41a291260ee8f03bcd0f
+        name: startDate
+        value: 2021-06-17
+      - description: ""
+        id: pair_460d5d5cfe7e412893d7c8216231d63e
+        name: endDate
+        value: 2021-06-30
+    parentId: fld_4d4716dfce4746e7a2a5e5683ee2d8c1
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/statistics/mood/date"
+    _type: request
+  - _id: req_748ba5b9db73426eab5c2192eb1c6a65
+    authentication:
+      disabled: false
+      password: password
+      type: basic
+      username: user
+    body: {}
+    created: 1625287692120
+    description: ""
+    headers:
+      - id: pair_f707e25eef304d858733a51b259ca72e
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1609317497731.375
+    method: GET
+    modified: 1625511419053
+    name: GET mood entries
+    parameters: []
+    parentId: fld_14a50dc148264905887c2c673d39d5ec
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/moodEntry"
+    _type: request
+  - _id: fld_14a50dc148264905887c2c673d39d5ec
+    created: 1625288076307
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1625288076307
+    modified: 1625288076307
+    name: moodEntry
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    _type: request_group
+  - _id: req_be0dd6dd62164ec7bcd59a3fdfc1a5c0
+    authentication:
+      disabled: false
+      password: password
+      type: basic
+      username: user
+    body: {}
+    created: 1625474663541
+    description: ""
+    headers:
+      - id: pair_f707e25eef304d858733a51b259ca72e
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1605325136232.4688
+    method: GET
+    modified: 1625847863103
+    name: GET mood entry by ID
+    parameters:
+      - description: ""
+        id: pair_6125e77b777b425fbd0268eac8f685fa
+        name: ""
+        value: ""
+    parentId: fld_14a50dc148264905887c2c673d39d5ec
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/moodEntry/hgjh"
+    _type: request
+  - _id: req_49284d9c88e847e583469d4a2cb39b52
+    authentication:
+      disabled: false
+      password: password
+      type: basic
+      username: user
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "mood": "UNHAPPY",
+            "description": "lost my keys",
+            "tags": [
+              {
+                "keyword": "worried"
+              }
+            ]
+          }
+    created: 1625417909898
+    description: ""
+    headers:
+      - id: pair_f707e25eef304d858733a51b259ca72e
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1601332774733.5625
+    method: POST
+    modified: 1628167580362
+    name: POST new mood entry
+    parameters:
+      - description: ""
+        id: pair_4dfc57520df545e58f190772bf977597
+        name: ""
+        value: ""
+    parentId: fld_14a50dc148264905887c2c673d39d5ec
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/moodEntry"
+    _type: request
+  - _id: req_ed93a141ea98432e95695da783cad9c4
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "mood": "HAPPY",
+            "description": "nice weather today",
+            "tags": [
+              {
+                "keyword": "feeling good"
+              }
+            ]
+          }
+    created: 1625477301864
+    description: ""
+    headers:
+      - id: pair_f707e25eef304d858733a51b259ca72e
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1597340413234.6562
+    method: PUT
+    modified: 1628167457485
+    name: PUT update mood entry
+    parameters: []
+    parentId: fld_14a50dc148264905887c2c673d39d5ec
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/moodEntry/7"
+    _type: request
+  - _id: req_8119dbef8cab4f4283aa74d20eafd53c
+    authentication: {}
+    body: {}
+    created: 1625287132663
+    description: ""
+    headers:
+      - description: ""
+        id: pair_86cd8d7e65f84b248a1eab319c87bd60
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1609317497781.375
+    method: GET
+    modified: 1625475966651
+    name: GET findByMood happy
+    parameters:
+      - description: ""
+        id: pair_15907e502a7242f49680123304e9b6a7
+        name: find
+        value: happy
+      - description: ""
+        id: pair_552f8ea3e90148c99096b3920fbc598d
+        name: ""
+        value: ""
+    parentId: fld_50711e36a9824dc4bc7b4261d6c77e55
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/search/mood"
+    _type: request
+  - _id: fld_50711e36a9824dc4bc7b4261d6c77e55
+    created: 1625288047635
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1625288047635
+    modified: 1625288047635
+    name: search
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    _type: request_group
+  - _id: req_dfac7496fa8e4a6aa3f30d1886376997
+    authentication: {}
+    body: {}
+    created: 1625475956756
+    description: ""
+    headers:
+      - description: ""
+        id: pair_86cd8d7e65f84b248a1eab319c87bd60
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1609317497768.875
+    method: GET
+    modified: 1625475956756
+    name: GET findByMood neutral
+    parameters:
+      - description: ""
+        id: pair_15907e502a7242f49680123304e9b6a7
+        name: find
+        value: neutral
+      - description: ""
+        id: pair_552f8ea3e90148c99096b3920fbc598d
+        name: ""
+        value: ""
+    parentId: fld_50711e36a9824dc4bc7b4261d6c77e55
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/search/mood"
+    _type: request
+  - _id: req_3a484056e7b8457cb88d76f15060fcbb
+    authentication: {}
+    body: {}
+    created: 1625475971869
+    description: ""
+    headers:
+      - description: ""
+        id: pair_86cd8d7e65f84b248a1eab319c87bd60
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1609317497762.625
+    method: GET
+    modified: 1625475978666
+    name: GET findByMood unhappy
+    parameters:
+      - description: ""
+        id: pair_15907e502a7242f49680123304e9b6a7
+        name: find
+        value: unhappy
+      - description: ""
+        id: pair_8a367993777f4b4495a0503df1b5b945
+        name: ""
+        value: ""
+      - description: ""
+        id: pair_552f8ea3e90148c99096b3920fbc598d
+        name: ""
+        value: ""
+    parentId: fld_50711e36a9824dc4bc7b4261d6c77e55
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}/search/mood"
+    _type: request
+  - _id: req_53628916c6174b7f818bfe7970b68a48
+    authentication: {}
+    body: {}
+    created: 1625286943827
+    description: ""
+    headers:
+      - description: ""
+        id: pair_86cd8d7e65f84b248a1eab319c87bd60
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1609317497756.375
+    method: GET
+    modified: 1625482021616
+    name: GET findByTags
+    parameters:
+      - description: ""
+        id: pair_15907e502a7242f49680123304e9b6a7
+        name: find
+        value: okay
+      - description: ""
+        id: pair_fbefafdb8c9c4b1f832af3c27737b2a4
+        name: ""
+        value: ""
+      - description: ""
+        id: pair_09167749b67e486cb518547b72495176
+        name: ""
+        value: ""
+      - description: ""
+        id: pair_552f8ea3e90148c99096b3920fbc598d
+        name: ""
+        value: ""
+    parentId: fld_50711e36a9824dc4bc7b4261d6c77e55
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ base_url  }}search/tags"
+    _type: request
+  - _id: env_9665b5425acdf904a0d4fa81112f7d6e1b9bd7ae
+    color: null
+    created: 1625286923154
+    data: {}
+    dataPropertyOrder: null
+    isPrivate: false
+    metaSortKey: 1625286923154
+    modified: 1625286923154
+    name: Base Environment
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    _type: environment
+  - _id: jar_9665b5425acdf904a0d4fa81112f7d6e1b9bd7ae
+    cookies:
+      - creation: 2021-07-05T18:07:39.906Z
+        domain: localhost
+        hostOnly: true
+        httpOnly: true
+        id: "7117712682475632"
+        key: JSESSIONID
+        lastAccessed: 2021-08-07T14:39:19.113Z
+        path: /
+        value: 1038B5FC9B2F20023038E5763FF9978A
+    created: 1625286923157
+    modified: 1628347159114
+    name: Default Jar
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    _type: cookie_jar
+  - _id: spc_a7f1a6a3bc6444eda2f183ec8515ed93
+    contentType: yaml
+    contents: ""
+    created: 1625286923097
+    fileName: MoodTracker
+    modified: 1625286923097
+    parentId: wrk_a1f95efabb644972aaab3b0a5b3e61e1
+    _type: api_spec
+  - _id: env_dc7e99a065e443958dd161096632fd27
+    color: "#6144ce"
+    created: 1625287612512
+    data:
+      base_url: http://localhost:8080
+    dataPropertyOrder:
+      "&":
+        - base_url
+    isPrivate: false
+    metaSortKey: 1625287612512
+    modified: 1625508496786
+    name: Development
+    parentId: env_9665b5425acdf904a0d4fa81112f7d6e1b9bd7ae
+    _type: environment
